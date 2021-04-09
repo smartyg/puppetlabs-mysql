@@ -424,7 +424,7 @@ describe 'mysql_grant' do
   describe 'adding procedure privileges' do
     pp = <<-MANIFEST
         exec { 'simpleproc-create':
-          command => 'mysql --user="root" --password="password" --database=mysql --delimiter="//" -NBe "CREATE PROCEDURE simpleproc (OUT param1 INT) BEGIN SELECT COUNT(*) INTO param1 FROM t; end//"',
+          command => 'mysql --user="root" --password="password" --database=mysql --delimiter="//" -NBe "CREATE PROCEDURE simpleproc1 (OUT param1 INT) BEGIN SELECT COUNT(*) INTO param1 FROM t; end//"',
           path    => '/usr/bin/',
           before  => Mysql_user['test2@tester'],
         }
@@ -454,7 +454,7 @@ describe 'mysql_grant' do
     it 'works without errors' do
       pp = <<-EOS
         exec { 'simplefunc-create':
-          command => '/usr/bin/mysql --user="root" --password="password" --database=mysql -NBe "CREATE FUNCTION simplefunc (s CHAR(20)) RETURNS CHAR(50) DETERMINISTIC RETURN CONCAT(\\'Hello, \\', s, \\'!\\')"',
+          command => '/usr/bin/mysql --user="root" --password="password" --database=mysql -NBe "CREATE FUNCTION simplefunc1 (s CHAR(20)) RETURNS CHAR(50) DETERMINISTIC RETURN CONCAT(\\'Hello, \\', s, \\'!\\')"',
           before  => Mysql_user['test3@tester'],
         }
 
