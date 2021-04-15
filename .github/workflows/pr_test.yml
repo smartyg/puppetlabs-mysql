@@ -156,7 +156,6 @@ jobs:
         echo ::endgroup::
 #ssh
     - name: Start SSH session
-      if: ${{ matrix.platforms.image == 'litmusimage/debian:9' && matrix.collection == 'puppet7-nightly' }}
       uses: luchihoratiu/debug-via-ssh@main
       with:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
