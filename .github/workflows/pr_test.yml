@@ -158,7 +158,7 @@ jobs:
     - name: Run acceptance tests
       run: |
         buildevents cmd $TRACE_ID $STEP_ID 'rake litmus:acceptance:parallel' -- bundle exec rake 'litmus:acceptance:parallel'
-        
+#ssh
     - name: Start SSH session
       if: ${{ matrix.platforms.image == 'litmusimage/debian:9' && matrix.collection == 'puppet7-nightly' }}
       uses: luchihoratiu/debug-via-ssh@main
