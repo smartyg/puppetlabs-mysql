@@ -257,7 +257,7 @@ class mysql::params {
       } else {
         $python_package_name = 'python-mysqldb'
       }
-     package { 'lsb-release': ensure => 'installed' }
+     
       notice($::lsbdistcodename)
       $ruby_package_name   = $::lsbdistcodename ? {
         'jessie'           => 'ruby-mysql',
