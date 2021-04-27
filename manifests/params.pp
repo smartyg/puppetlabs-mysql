@@ -122,7 +122,7 @@ class mysql::params {
 
     'Suse': {
       case $::operatingsystem {
-        'OpenSuSE': {
+        'OpenSuSE','openSUSE': {
           if versioncmp( $::operatingsystemmajrelease, '12' ) >= 0 {
             $client_package_name = 'mariadb-client'
             $server_package_name = 'mariadb'
@@ -154,12 +154,12 @@ class mysql::params {
       $includedir          = '/etc/my.cnf.d'
       $datadir             = '/var/lib/mysql'
       $log_error           = $::operatingsystem ? {
-        /OpenSuSE/         => '/var/log/mysql/mysqld.log',
-        /(SLES|SLED)/      => '/var/log/mysqld.log',
+        /(OpenSuSE|openSUSE)/ => '/var/log/mysql/mysqld.log',
+        /(SLES|SLED)/         => '/var/log/mysqld.log',
       }
       $pidfile             = $::operatingsystem ? {
-        /OpenSuSE/         => '/var/run/mysql/mysqld.pid',
-        /(SLES|SLED)/      => '/var/lib/mysql/mysqld.pid',
+        /(OpenSuSE|openSUSE)/ => '/var/run/mysql/mysqld.pid',
+        /(SLES|SLED)/         => '/var/lib/mysql/mysqld.pid',
       }
       $root_group          = 'root'
       $mysql_group         = 'mysql'
@@ -189,8 +189,8 @@ class mysql::params {
       $php_package_name    = 'apache2-mod_php53'
       $python_package_name = 'python-mysql'
       $ruby_package_name   = $::operatingsystem ? {
-        /OpenSuSE/         => 'rubygem-mysql',
-        /(SLES|SLED)/      => 'ruby-mysql',
+        /(OpenSuSE|openSUSE)/ => 'rubygem-mysql',
+        /(SLES|SLED)/         => 'ruby-mysql',
       }
       $client_dev_package_name = 'libmysqlclient-devel'
       $daemon_dev_package_name = 'mysql-devel'
